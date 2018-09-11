@@ -1,3 +1,2 @@
-# helloworld-c-coverity1
-
-Coverity BAC example using Jenkinsfiles and Coverity plugin syntax
+# helloworld-BAC-declarative
+Jenkins pipeline + Coverity plugin BAC example using Jenkinsfile with declarative syntax
