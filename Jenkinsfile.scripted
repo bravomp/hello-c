@@ -1,4 +1,7 @@
 node {
+	stage('clean') {
+		deleteDir()
+	}
 	stage('checkout') {
 		checkout scm
 		GIT_COMMIT = sh(returnStdout: true, script: 'git log -n 1 --pretty=format:%H').trim()
