@@ -1,12 +1,10 @@
 pipeline {
 	agent any
-
 	environment {
 		PROJECT = 'hello'
 		STREAM = 'hello'
 		IDIR = 'idir'
 	}
-
 	stages {
 		stage('build') {
 			steps {
@@ -35,14 +33,9 @@ pipeline {
 			}
 		}
 	}
-
 	post {
 		always {
 			deleteDir()
 		}
-	}
-
-	options {
-		buildDiscarder(logRotator(numToKeepStr:'10'))
 	}
 }

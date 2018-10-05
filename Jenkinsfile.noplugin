@@ -1,6 +1,5 @@
 pipeline {
 	agent any
-
 	environment {
 		COVBIN = '/opt/coverity/analysis/latest'
 		COVHOST = 'localhost'
@@ -9,7 +8,6 @@ pipeline {
 		STREAM = 'hello'
 		IDIR = 'idir'
 	}
-
 	stages {
 		stage('build') {
 			steps {
@@ -33,14 +31,9 @@ pipeline {
 			}
 		}
 	}
-
 	post {
 		always {
 			deleteDir()
 		}
-	}
-
-	options {
-		buildDiscarder(logRotator(numToKeepStr:'10'))
 	}
 }

@@ -23,7 +23,4 @@ node {
 	stage('post') {
 		deleteDir()
 	}
-	options {
-		buildDiscarder(logRotator(numToKeepStr:'10'))
-	}
 }
