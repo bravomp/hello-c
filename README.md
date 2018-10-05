@@ -1,5 +1,5 @@
 # helloworld-BAC
-helloworld Coverity Build-Analyze-Commit example project
+The classic "hello world" Coverity Build-Analyze-Commit (BAC) example project to demonstrate CI integration.
 
 <li>Jenkinsfile.declarative = Jenkins pipeline + Coverity plugin with declarative syntax
 <li>Jenkinsfile.scripted = Jenkins pipeline + Coverity plugin with scripted syntax
