@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	environment {
-		COVBIN = '/opt/coverity/analysis/latest'
+		COVBIN = '/opt/coverity/analysis/latest/bin'
 		COVHOST = 'localhost'
 		AUTHKEY = '${JENKINS_HOME}/.coverity/authkeys/ak-localhost-8080'
 		PROJECT = 'hello'
