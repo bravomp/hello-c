@@ -2,6 +2,7 @@ pipeline {
 	agent any
 
 	environment {
+		PROJECT = 'hello'
 		STREAM = 'hello'
 		IDIR = 'idir'
 	}
@@ -30,7 +31,7 @@ pipeline {
 		}
 		stage('results') {
 			steps {
-				coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: 'hello'
+				coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: '${PROJECT}'
 			}
 		}
 	}

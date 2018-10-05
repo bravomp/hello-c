@@ -4,7 +4,8 @@ pipeline {
 	environment {
 		COVBIN = '/opt/coverity/analysis/latest'
 		COVHOST = 'localhost'
-		AUTHKEY = 'authkey'
+		AUTHKEY = '${JENKINS_HOME}/.coverity/authkeys/ak-localhost-8080'
+		PROJECT = 'hello'
 		STREAM = 'hello'
 		IDIR = 'idir'
 	}
@@ -22,12 +23,13 @@ pipeline {
 		}
 		stage('commit') {
 			steps {
-				//sh "${COVBIN}/cov-commit-defects --dir ${IDIR} --host ${COVERITY_HOST} --stream ${STREAM} --scm git --description ${BUILD_TAG} --target Linux_x86_64 --version ${GIT_COMMIT}"
+				sh "${COVBIN}/cov-commit-defects --dir ${IDIR} --host ${COVHOST} --auth-key-file ${AUTHKEY} --stream ${STREAM} --scm git --description ${BUILD_TAG} --target Linux_x86_64 --version ${GIT_COMMIT}"
 			}
 		}
 		stage('results') {
 			steps {
-				//coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: 'hello'
+				//coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: '${PROJECT}'
+				//use cov-commit-defects --preview-report
 			}
 		}
 	}
