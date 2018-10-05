@@ -1,7 +1,4 @@
 node {
-	stage('clean') {
-		deleteDir()
-	}
 	stage('checkout') {
 		checkout scm
 		GIT_COMMIT = sh(returnStdout: true, script: 'git log -n 1 --pretty=format:%H').trim()
@@ -21,5 +18,11 @@ node {
 	}
 	stage('results') {
 		coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: 'hello'
+	}
+	stage('post') {
+		deleteDir()
+	}
+	options {
+		buildDiscarder(logRotator(numToKeepStr:'10'))
 	}
 }
