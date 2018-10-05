@@ -1,0 +1,44 @@
+pipeline {
+	agent any
+
+	environment {
+		COVBIN = '/opt/coverity/analysis/latest'
+		COVHOST = 'localhost'
+		AUTHKEY = 'authkey'
+		STREAM = 'hello'
+		IDIR = 'idir'
+	}
+
+	stages {
+		stage('build') {
+			steps {
+				sh "${COVBIN}/cov-build --dir ${IDIR} make all"
+			}
+		}
+		stage('analyze') {
+			steps {
+				sh "${COVBIN}/cov-analyze --dir ${IDIR} --strip-path ${WORKSPACE} --all --enable-callgraph-metrics --enable-fnptr --enable-virtual"
+			}
+		}
+		stage('commit') {
+			steps {
+				//sh "${COVBIN}/cov-commit-defects --dir ${IDIR} --host ${COVERITY_HOST} --stream ${STREAM} --scm git --description ${BUILD_TAG} --target Linux_x86_64 --version ${GIT_COMMIT}"
+			}
+		}
+		stage('results') {
+			steps {
+				//coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: 'hello'
+			}
+		}
+	}
+
+	post {
+		always {
+			deleteDir()
+		}
+	}
+
+	options {
+		buildDiscarder(logRotator(numToKeepStr:'10'))
+	}
+}
