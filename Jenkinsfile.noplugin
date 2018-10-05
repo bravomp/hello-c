@@ -26,8 +26,7 @@ pipeline {
 		}
 		stage('results') {
 			steps {
-				//coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: "${PROJECT}"
-				//use cov-commit-defects --preview-report
+				sh "${COVBIN}/cov-manage-im --host ${COVHOST} --auth-key-file ${AUTHKEY} --mode defects --project ${PROJET} --show
 			}
 		}
 	}
