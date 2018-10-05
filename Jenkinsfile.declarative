@@ -31,7 +31,7 @@ pipeline {
 		}
 		stage('results') {
 			steps {
-				coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: '${PROJECT}'
+				coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: "${PROJECT}"
 			}
 		}
 	}
