@@ -5,7 +5,7 @@ PROG = hello
 SRC = hello.c
 OBJ = $(SRC:.c=.o)
 
-all: clean hello test
+all: clean $(PROG) test
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -13,7 +13,7 @@ all: clean hello test
 clean:
 	rm -rf $(PROG) $(OBJ) $(COVIDIR)
 
-hello: $(OBJ)
+$(PROG): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
 test: $(PROG)
