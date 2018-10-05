@@ -7,11 +7,6 @@ pipeline {
 	}
 
 	stages {
-		stage('clean') {
-			steps {
-				deleteDir()
-			}
-		}
 		stage('build') {
 			steps {
 				withCoverityEnv(coverityToolName: 'latest', connectInstance: 'localhost') {
@@ -38,5 +33,15 @@ pipeline {
 				coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: 'hello'
 			}
 		}
+	}
+
+	post {
+		always {
+			deleteDir()
+		}
+	}
+
+	options {
+		buildDiscarder(logRotator(numToKeepStr:'10'))
 	}
 }
