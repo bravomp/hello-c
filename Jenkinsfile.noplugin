@@ -26,7 +26,7 @@ pipeline {
 		}
 		stage('results') {
 			steps {
-				sh "${COVBIN}/cov-manage-im --host ${COVHOST} --auth-key-file ${AUTHKEY} --mode defects --project ${PROJET} --show
+				sh "${COVBIN}/cov-manage-im --host ${COVHOST} --auth-key-file ${AUTHKEY} --mode defects --project ${PROJET} --show"
 			}
 		}
 	}
