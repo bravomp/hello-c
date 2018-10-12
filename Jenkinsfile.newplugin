@@ -19,8 +19,8 @@ pipeline {
 					coverityRunConfiguration: 'ADVANCED',
 					coverityToolName: 'latest',
 					onCommandFailure: 'SKIP_REMAINING_COMMANDS',
-					projectName: 'hello',
-					streamName: 'hello',
+					projectName: "${PROJECT}",
+					streamName: "${STREAM}",
 					viewName: 'Outstanding Issues'
 			}
 		}
@@ -37,8 +37,8 @@ pipeline {
 					coverityRunConfiguration: 'ADVANCED',
 					coverityToolName: 'latest',
 					onCommandFailure: 'SKIP_REMAINING_COMMANDS',
-					projectName: 'hello',
-					streamName: 'hello',
+					projectName: "${PROJECT}",
+					streamName: "${STREAM}",
 					viewName: 'Outstanding Issues'
 			}
 		}
@@ -55,8 +55,8 @@ pipeline {
 					coverityRunConfiguration: 'ADVANCED',
 					coverityToolName: 'latest',
 					onCommandFailure: 'SKIP_REMAINING_COMMANDS',
-					projectName: 'hello',
-					streamName: 'hello',
+					projectName: "${PROJECT}",
+					streamName: "${STREAM}",
 					viewName: 'Outstanding Issues'
 			}
 		}
