@@ -13,7 +13,7 @@ pipeline {
 					buildStatusForIssues: 'SUCCESS',
 					changeSetExclusionPatterns: '',
 					changeSetInclusionPatterns: '',
-					checkForIssuesInView: true,
+					checkForIssuesInView: false,
 					configureChangeSetPatterns: false,
 					coverityAnalysisType: 'COV_ANALYZE',
 					coverityRunConfiguration: 'ADVANCED',
@@ -31,7 +31,7 @@ pipeline {
 					buildStatusForIssues: 'SUCCESS',
 					changeSetExclusionPatterns: '',
 					changeSetInclusionPatterns: '',
-					checkForIssuesInView: true,
+					checkForIssuesInView: false,
 					configureChangeSetPatterns: false,
 					coverityAnalysisType: 'COV_ANALYZE',
 					coverityRunConfiguration: 'ADVANCED',
@@ -49,15 +49,14 @@ pipeline {
 					buildStatusForIssues: 'SUCCESS',
 					changeSetExclusionPatterns: '',
 					changeSetInclusionPatterns: '',
-					checkForIssuesInView: true,
+					checkForIssuesInView: false,
 					configureChangeSetPatterns: false,
 					coverityAnalysisType: 'COV_ANALYZE',
 					coverityRunConfiguration: 'ADVANCED',
 					coverityToolName: 'latest',
 					onCommandFailure: 'SKIP_REMAINING_COMMANDS',
 					projectName: "${PROJECT}",
-					streamName: "${STREAM}",
-					viewName: 'Outstanding Issues'
+					streamName: "${STREAM}"
 			}
 		}
 	}
