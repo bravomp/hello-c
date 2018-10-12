@@ -1,0 +1,35 @@
+pipeline {
+	agent any
+	environment {
+		PROJECT = 'hello'
+		STREAM = 'hello'
+		IDIR = 'idir'
+	}
+	stages {
+		stage('build') {
+			steps {
+				synopsys_coverity coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', projectName: 'hello', streamName: 'hello', commands: [[command: 'cov-build --dir ${WORKSPACE}/idir make all']]
+			}
+		}
+		stage('analyze') {
+			steps {
+				synopsys_coverity coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', projectName: 'hello', streamName: 'hello', commands: [[command: 'cov-analyze --dir ${WORKSPACE}/idir --strip-path ${WORKSPACE} --all --enable-callgraph-metrics --enable-fnptr --enable-virtual']]
+			}
+		}
+		stage('commit') {
+			steps {
+				synopsys_coverity coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', projectName: 'hello', streamName: 'hello', commands: [[command: 'cov-commit-defects --dir ${WORKSPACE}/idir --url http://${COVERITY_HOST}:${COVERITY_PORT} --stream ${COV_STREAM} --description ${BUILD_TAG} --target Linux_x86_64']]
+			}
+		}
+		//stage('results') {
+		//	steps {
+		//		coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: "${PROJECT}"
+		//	}
+		//}
+	}
+	post {
+		always {
+			deleteDir()
+		}
+	}
+}
