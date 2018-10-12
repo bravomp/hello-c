@@ -4,13 +4,25 @@ pipeline {
 		PROJECT = 'hello'
 		STREAM = 'hello'
 		IDIR = 'idir'
-		SPAM = "buildCommand: '', buildStatusForIssues: 'SUCCESS', changeSetExclusionPatterns: '', changeSetInclusionPatterns: '', checkForIssuesInView: true, configureChangeSetPatterns: false, coverityAnalysisType: 'COV_ANALYZE', coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', onCommandFailure: 'SKIP_REMAINING_COMMANDS', projectName: 'hello', streamName: 'hello', viewName: 'Outstanding Issues'"
 	}
 	stages {
 		stage('build') {
 			steps {
-//synopsys_coverity buildCommand: '', buildStatusForIssues: 'SUCCESS', changeSetExclusionPatterns: '', changeSetInclusionPatterns: '', checkForIssuesInView: true, configureChangeSetPatterns: false, coverityAnalysisType: 'COV_ANALYZE', coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', onCommandFailure: 'SKIP_REMAINING_COMMANDS', projectName: 'hello', streamName: 'hello', viewName: 'Outstanding Issues', commands: [[command: 'cov-build --dir ${WORKSPACE}/idir make all']]
-synopsys_coverity ${SPAM}, commands: [[command: 'cov-build --dir ${WORKSPACE}/idir make all']]
+				synopsys_coverity
+					buildCommand: '',
+					buildStatusForIssues: 'SUCCESS',
+					changeSetExclusionPatterns: '',
+					changeSetInclusionPatterns: '',
+					checkForIssuesInView: true,
+					commands: [[command: 'cov-build --dir ${WORKSPACE}/idir make all']],
+					configureChangeSetPatterns: false,
+					coverityAnalysisType: 'COV_ANALYZE',
+					coverityRunConfiguration: 'ADVANCED',
+					coverityToolName: 'latest',
+					onCommandFailure: 'SKIP_REMAINING_COMMANDS',
+					projectName: 'hello',
+					streamName: 'hello',
+					viewName: 'Outstanding Issues'
 			}
 		}
 		stage('analyze') {
