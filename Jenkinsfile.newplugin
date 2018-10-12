@@ -17,8 +17,8 @@ synopsys_coverity buildCommand: '', buildStatusForIssues: 'SUCCESS', changeSetEx
 			}
 		}
 		stage('commit') {
-synopsys_coverity buildCommand: '', buildStatusForIssues: 'SUCCESS', changeSetExclusionPatterns: '', changeSetInclusionPatterns: '', checkForIssuesInView: true, configureChangeSetPatterns: false, coverityAnalysisType: 'COV_ANALYZE', coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', onCommandFailure: 'SKIP_REMAINING_COMMANDS', projectName: 'hello', streamName: 'hello', viewName: 'Outstanding Issues', commands: [[command: 'cov-commit-defects --dir ${WORKSPACE}/idir --url http://${COVERITY_HOST}:${COVERITY_PORT} --stream ${COV_STREAM} --description ${BUILD_TAG} --target Linux_x86_64']]
 			steps {
+synopsys_coverity buildCommand: '', buildStatusForIssues: 'SUCCESS', changeSetExclusionPatterns: '', changeSetInclusionPatterns: '', checkForIssuesInView: true, configureChangeSetPatterns: false, coverityAnalysisType: 'COV_ANALYZE', coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', onCommandFailure: 'SKIP_REMAINING_COMMANDS', projectName: 'hello', streamName: 'hello', viewName: 'Outstanding Issues', commands: [[command: 'cov-commit-defects --dir ${WORKSPACE}/idir --url http://${COVERITY_HOST}:${COVERITY_PORT} --stream ${COV_STREAM} --description ${BUILD_TAG} --target Linux_x86_64']]
 			}
 		}
 	}
