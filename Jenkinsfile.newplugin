@@ -56,7 +56,8 @@ pipeline {
 					coverityToolName: 'latest',
 					onCommandFailure: 'SKIP_REMAINING_COMMANDS',
 					projectName: "${PROJECT}",
-					streamName: "${STREAM}"
+					streamName: "${STREAM}",
+					viewName: 'Outstanding Issues'
 			}
 		}
 	}
