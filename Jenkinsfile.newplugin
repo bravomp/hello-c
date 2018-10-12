@@ -8,13 +8,12 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				synopsys_coverity
+				synopsys_coverity commands: [[command: 'cov-build --dir ${WORKSPACE}/idir make all']],
 					buildCommand: '',
 					buildStatusForIssues: 'SUCCESS',
 					changeSetExclusionPatterns: '',
 					changeSetInclusionPatterns: '',
 					checkForIssuesInView: true,
-					commands: [[command: 'cov-build --dir ${WORKSPACE}/idir make all']],
 					configureChangeSetPatterns: false,
 					coverityAnalysisType: 'COV_ANALYZE',
 					coverityRunConfiguration: 'ADVANCED',
