@@ -49,24 +49,6 @@ pipeline {
 					buildStatusForIssues: 'SUCCESS',
 					changeSetExclusionPatterns: '',
 					changeSetInclusionPatterns: '',
-					checkForIssuesInView: false,
-					configureChangeSetPatterns: false,
-					coverityAnalysisType: 'COV_ANALYZE',
-					coverityRunConfiguration: 'ADVANCED',
-					coverityToolName: 'latest',
-					onCommandFailure: 'SKIP_REMAINING_COMMANDS',
-					projectName: "${PROJECT}",
-					streamName: "${STREAM}",
-					viewName: 'Outstanding Issues'
-			}
-		}
-		stage('results') {
-			steps {
-				synopsys_coverity commands: [[command: 'true']],
-					buildCommand: '',
-					buildStatusForIssues: 'SUCCESS',
-					changeSetExclusionPatterns: '',
-					changeSetInclusionPatterns: '',
 					checkForIssuesInView: true,
 					configureChangeSetPatterns: false,
 					coverityAnalysisType: 'COV_ANALYZE',
