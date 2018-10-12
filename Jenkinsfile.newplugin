@@ -8,24 +8,19 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				synopsys_coverity coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', projectName: 'hello', streamName: 'hello', commands: [[command: 'cov-build --dir ${WORKSPACE}/idir make all']]
+synopsys_coverity buildCommand: '', buildStatusForIssues: 'SUCCESS', changeSetExclusionPatterns: '', changeSetInclusionPatterns: '', checkForIssuesInView: true, configureChangeSetPatterns: false, coverityAnalysisType: 'COV_ANALYZE', coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', onCommandFailure: 'SKIP_REMAINING_COMMANDS', projectName: 'hello', streamName: 'hello', viewName: 'Outstanding Issues', commands: [[command: 'cov-build --dir ${WORKSPACE}/idir make all']]
 			}
 		}
 		stage('analyze') {
 			steps {
-				synopsys_coverity coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', projectName: 'hello', streamName: 'hello', commands: [[command: 'cov-analyze --dir ${WORKSPACE}/idir --strip-path ${WORKSPACE} --all --enable-callgraph-metrics --enable-fnptr --enable-virtual']]
+synopsys_coverity buildCommand: '', buildStatusForIssues: 'SUCCESS', changeSetExclusionPatterns: '', changeSetInclusionPatterns: '', checkForIssuesInView: true, configureChangeSetPatterns: false, coverityAnalysisType: 'COV_ANALYZE', coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', onCommandFailure: 'SKIP_REMAINING_COMMANDS', projectName: 'hello', streamName: 'hello', viewName: 'Outstanding Issues', commands: [[command: 'cov-analyze --dir ${WORKSPACE}/idir --strip-path ${WORKSPACE} --all --enable-callgraph-metrics --enable-fnptr --enable-virtual']]
 			}
 		}
 		stage('commit') {
+synopsys_coverity buildCommand: '', buildStatusForIssues: 'SUCCESS', changeSetExclusionPatterns: '', changeSetInclusionPatterns: '', checkForIssuesInView: true, configureChangeSetPatterns: false, coverityAnalysisType: 'COV_ANALYZE', coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', onCommandFailure: 'SKIP_REMAINING_COMMANDS', projectName: 'hello', streamName: 'hello', viewName: 'Outstanding Issues', commands: [[command: 'cov-commit-defects --dir ${WORKSPACE}/idir --url http://${COVERITY_HOST}:${COVERITY_PORT} --stream ${COV_STREAM} --description ${BUILD_TAG} --target Linux_x86_64']]
 			steps {
-				synopsys_coverity coverityRunConfiguration: 'ADVANCED', coverityToolName: 'latest', projectName: 'hello', streamName: 'hello', commands: [[command: 'cov-commit-defects --dir ${WORKSPACE}/idir --url http://${COVERITY_HOST}:${COVERITY_PORT} --stream ${COV_STREAM} --description ${BUILD_TAG} --target Linux_x86_64']]
 			}
 		}
-		//stage('results') {
-		//	steps {
-		//		coverityResults connectInstance: 'localhost', connectView: 'Outstanding Issues', projectId: "${PROJECT}"
-		//	}
-		//}
 	}
 	post {
 		always {
