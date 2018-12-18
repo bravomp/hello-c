@@ -4,8 +4,8 @@ pipeline {
 		COVBIN = '/opt/coverity/analysis/latest/bin'
 		COVHOST = 'localhost'
 		AUTHKEY = '${JENKINS_HOME}/.coverity/authkeys/ak-localhost-8080'
-		PROJECT = 'hello'
-		STREAM = 'hello'
+		PROJECT = 'hello-c'
+		STREAM = 'hello-c'
 		IDIR = 'idir'
 	}
 	stages {

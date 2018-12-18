@@ -1,8 +1,8 @@
 pipeline {
 	agent any
 	environment {
-		PROJECT = 'hello'
-		STREAM = 'hello'
+		PROJECT = 'hello-c'
+		STREAM = 'hello-c'
 		IDIR = 'idir'
 	}
 	stages {
